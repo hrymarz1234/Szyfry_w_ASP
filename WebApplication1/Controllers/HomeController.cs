@@ -12,9 +12,63 @@ namespace WebApplication1.Controllers
         {
             _logger = logger;
         }
+        [HttpGet]
+        public IActionResult Szyfr_polibiusza()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Szyfr_polibiusza(Szyfry szyfr)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr);
+            }
+            var wynki = Szyfry.szyfr_polibiusza(szyfr.tekst, szyfr.taknie);
+            TempData["Wynik"] = wynki;
+
+            return RedirectToAction("Szyfr_polibiusza");
+        }
+        [HttpPost]
+        public IActionResult Szyfr_polibiusza2(OdSzyfry szyfr2)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr2);
+            }
+            var wynki = OdSzyfry.odszyfrowanie_polibiusza(szyfr2.tekst, szyfr2.taknie);
+            TempData["Wynik2"] = wynki;
+
+            return RedirectToAction("Szyfr_polibiusza");
+        }
+        [HttpGet]
         public IActionResult Szyfr_cezara()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Szyfr_cezara(Szyfry szyfr)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(szyfr);
+            }
+            var wynki = Szyfry.szyfr_cezara(szyfr.tekst,szyfr.przesuniecie);
+            TempData["Wynik"]=wynki;
+
+            return RedirectToAction("Szyfr_cezara");
+        }
+        [HttpPost]
+        public IActionResult Szyfr_cezara2(OdSzyfry szyfr2)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr2);
+            }
+            var wynki = OdSzyfry.odszyfrowanie_cezara(szyfr2.tekst, szyfr2.przesuniecie);
+            TempData["Wynik2"] = wynki;
+
+            return RedirectToAction("Szyfr_cezara");
         }
         public IActionResult Index()
         {

@@ -1,6 +1,33 @@
-﻿@{
+﻿@model WebApplication1.Models.Szyfry
+@{
     ViewData["Title"] = "Szyfr cezara";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>tu wyswietli ci sie reszta jak to dokoncze</p>
+    <h1>@ViewData["Title"]</h1>
+
+<p>Tutaj bedzie obliczany szyfr cezara</p>
+
+@using (Html.BeginForm("Szyfr_cezara","Home",FormMethod.Post))
+{
+    @Html.ValidationSummary();
+    <span>Wpisz tutaj tekst który chcesz zaszyfrować:</span> @Html.TextBoxFor(x=>x.tekst)
+    <span>Podaj liczbe o ile znaków chcesz zaszyfrowac dany tekst:</span>@Html.TextBoxFor(y=>y.przesuniecie)
+
+    <button type="submit">Zatwierdź szyfr</button>
+    <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik"]</strong></p> 
+    
+    
+}
+@using (Html.BeginForm("Szyfr_cezara2", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary();
+    <span>Wpisz tutaj tekst który chcesz odszyfrować:</span> @Html.TextBoxFor(c => c.tekst)
+    <span>Podaj liczbe o ile znaków chcesz odszyfrowac dany tekst:</span>@Html.TextBoxFor(b => b.przesuniecie)
+
+
+    <button type="submit">Zatwierdź szyfr</button>
+    <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik2"]</strong></p>
+
+
+}
+

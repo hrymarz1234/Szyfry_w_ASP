@@ -14,6 +14,23 @@ namespace WebApplication1.Controllers
             _logger = logger;
         }
         [HttpGet]
+        public IActionResult Szyfr_homofoniczny()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Szyfr_homofoniczny(Szyfry szyfr)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr);
+            }
+            var wynki = Szyfry.szyfr_homofoniczny(szyfr.tekst);
+            TempData["Wynik"] = wynki;
+
+            return RedirectToAction("Szyfr_homofoniczny");
+        }
+        [HttpGet]
         public IActionResult Szyfr_polibiusza()
         {
             return View();

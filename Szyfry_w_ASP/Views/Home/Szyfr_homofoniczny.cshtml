@@ -1,0 +1,21 @@
+﻿@model WebApplication1.Models.Szyfry
+@{
+    ViewData["Title"] = "Szyfr homofoniczny";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Tutaj bedzie obliczany szyfr homofoniczny</p>
+
+@using (Html.BeginForm("Szyfr_homofoniczny", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    ;
+    <span>Wpisz tutaj tekst który chcesz zaszyfrować:</span> @Html.TextBoxFor(x=>x.tekst)
+    
+
+    <button type="submit">Zatwierdź szyfr</button>
+    <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik"]</strong></p>
+
+
+}

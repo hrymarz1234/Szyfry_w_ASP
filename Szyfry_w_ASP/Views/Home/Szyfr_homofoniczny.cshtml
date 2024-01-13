@@ -19,3 +19,17 @@
 
 
 }
+@using (Html.BeginForm("Szyfr_homofoniczny2", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    ;
+    <span>Wpisz tutaj tekst który chcesz odszyfrować:</span> @Html.TextBoxFor(c => c.tekst)
+  
+
+
+
+    <button type="submit">Zatwierdź szyfr</button>
+    <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik2"]</strong></p>
+
+
+}

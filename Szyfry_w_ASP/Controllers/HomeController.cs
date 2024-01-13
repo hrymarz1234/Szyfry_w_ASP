@@ -30,6 +30,18 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("Szyfr_homofoniczny");
         }
+        [HttpPost]
+        public IActionResult Szyfr_homofoniczny2(OdSzyfry szyfr)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr);
+            }
+            var wynki = OdSzyfry.odszyfrowanie_homofoniczne(szyfr.tekst);
+            TempData["Wynik"] = wynki;
+
+            return RedirectToAction("Szyfr_homofoniczny");
+        }
         [HttpGet]
         public IActionResult Szyfr_polibiusza()
         {

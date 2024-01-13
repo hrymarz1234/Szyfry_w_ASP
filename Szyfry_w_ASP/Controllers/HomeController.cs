@@ -38,7 +38,7 @@ namespace WebApplication1.Controllers
                 return View(szyfr);
             }
             var wynki = OdSzyfry.odszyfrowanie_homofoniczne(szyfr.tekst);
-            TempData["Wynik"] = wynki;
+            TempData["Wynik2"] = wynki;
 
             return RedirectToAction("Szyfr_homofoniczny");
         }

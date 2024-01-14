@@ -182,11 +182,12 @@ namespace WebApplication1.Models
                 {
                     if (pom[k] == tab[j])
                         l1 += j;
-                    if (klucz[k] == tab[j])
+                    if (klucz[(k%klucz.Length)] == tab[j])
                         l2 += j;
                 }
                 l1 += l2;
                 wynik += tab[l1%35];
+                l1 = 0;
             }
             return wynik;
         }

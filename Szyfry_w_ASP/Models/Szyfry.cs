@@ -9,6 +9,7 @@ namespace WebApplication1.Models
         [Required]
         public int przesuniecie { get; set; }
         public bool taknie { get; set; }
+        public string klucz {get; set; }
         public static string szyfr_cezara(string tekst, int przesuniecie)
         {
             string tab = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
@@ -140,6 +141,54 @@ namespace WebApplication1.Models
                 }
             }
             return pom;
+        }
+        public static string szyfr_vigenera(string tekst, string klucz)
+        {
+            string tab = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+            string tab2 = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ";
+            string pom = "";
+            string pom2 = "";
+            string wynik = "";
+            int l1=0;
+            int l2=0;
+
+            for (int i = 0; i < tekst.Length; i++)
+            {
+                if (tekst[i] != ' ')
+                {
+                    pom += tekst[i];
+                }
+
+            }
+            for (int l = 0; l < pom.Length; l++)
+            {
+                for (int j = 0; j < tab2.Length; j++)
+                {
+                    if (pom[l] == tab2[j])
+                    {
+                        pom2 += tab[j];
+                    }
+                    else if (pom[l] == tab[j])
+                    {
+                        pom2 += tab[j];
+                    }
+
+                }
+
+            }
+            for(int k=0;k<tekst.Length;k++)
+            {
+                for(int j=0;j<35;j++)
+                {
+                    if (pom[k] == tab[j])
+                        l1 += j;
+                    if (klucz[k] == tab[j])
+                        l2 += j;
+                }
+                l1 += l2;
+                wynik += tab[l1%35];
+            }
+            return wynik;
         }
     }
 }

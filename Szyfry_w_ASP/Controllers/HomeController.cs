@@ -14,6 +14,23 @@ namespace WebApplication1.Controllers
             _logger = logger;
         }
         [HttpGet]
+        public IActionResult Szyfr_vigenera()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Szyfr_vigenera(Szyfry szyfr)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr);
+            }
+            var wynki = Szyfry.szyfr_vigenera(szyfr.tekst,szyfr.klucz);
+            TempData["Wynik"] = wynki;
+
+            return RedirectToAction("Szyfr_vigenera");
+        }
+        [HttpGet]
         public IActionResult Szyfr_homofoniczny()
         {
             return View();

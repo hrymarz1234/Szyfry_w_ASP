@@ -1,0 +1,23 @@
+﻿@model WebApplication1.Models.Szyfry
+@{
+    ViewData["Title"] = "Szyfr Vigenere";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Tutaj bedzie obliczany szyfr vigenere</p>
+
+@using (Html.BeginForm("Szyfr_vigenera", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    ;
+    <span>Wpisz tutaj tekst który chcesz zaszyfrować:</span> @Html.TextBoxFor(x => x.tekst)
+    <span>Podaj klucz</span>
+
+    @Html.TextBoxFor(y => y.klucz)
+
+    <button type="submit">Zatwierdź szyfr</button>
+    <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik"]</strong></p>
+
+
+}

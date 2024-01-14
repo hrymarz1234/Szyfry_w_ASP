@@ -25,7 +25,7 @@ namespace WebApplication1.Controllers
             {
                 return View(szyfr);
             }
-            var wynki = Szyfry.szyfr_vigenera(szyfr.tekst,szyfr.klucz);
+            var wynki = Szyfry.szyfr_vigenera(szyfr.tekst, szyfr.klucz);
             TempData["Wynik"] = wynki;
 
             return RedirectToAction("Szyfr_vigenera");

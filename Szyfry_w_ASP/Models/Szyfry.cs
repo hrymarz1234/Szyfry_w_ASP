@@ -176,11 +176,11 @@ namespace WebApplication1.Models
                 }
 
             }
-            for(int k=0;k<tekst.Length;k++)
+            for(int k=0;k<pom2.Length;k++)
             {
                 for(int j=0;j<35;j++)
                 {
-                    if (pom[k] == tab[j])
+                    if (pom2[k] == tab[j])
                         l1 += j;
                     if (klucz[(k%klucz.Length)] == tab[j])
                         l2 += j;
@@ -188,6 +188,7 @@ namespace WebApplication1.Models
                 l1 += l2;
                 wynik += tab[l1%35];
                 l1 = 0;
+                l2 = 0;
             }
             return wynik;
         }

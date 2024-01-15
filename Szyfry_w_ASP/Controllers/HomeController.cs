@@ -30,6 +30,18 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("Szyfr_vigenera");
         }
+        [HttpPost]
+        public IActionResult Szyfr_vigenera2(OdSzyfry szyfr)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(szyfr);
+            }
+            var wynki = OdSzyfry.odszyfrowanie_vigenera(szyfr.tekst, szyfr.klucz);
+            TempData["Wynik2"] = wynki;
+
+            return RedirectToAction("Szyfr_vigenera");
+        }
         [HttpGet]
         public IActionResult Szyfr_homofoniczny()
         {

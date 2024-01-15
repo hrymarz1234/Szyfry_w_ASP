@@ -12,12 +12,27 @@
     @Html.ValidationSummary()
     ;
     <span>Wpisz tutaj tekst który chcesz zaszyfrować:</span> @Html.TextBoxFor(x => x.tekst)
-    <span>Podaj klucz</span>
+    <span>Podaj klucz:</span>
 
     @Html.TextBoxFor(y => y.klucz)
 
     <button type="submit">Zatwierdź szyfr</button>
     <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik"]</strong></p>
+
+
+}
+@using (Html.BeginForm("Szyfr_vigenera2", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    ;
+    <span>Wpisz tutaj tekst który chcesz odszyfrować:</span> @Html.TextBoxFor(c => c.tekst)
+    <span>Podaj klucz:</span>
+
+    @Html.TextBoxFor(b => b.klucz)
+
+
+    <button type="submit">Zatwierdź szyfr</button>
+    <p>Tutaj widzisz swój wynik: <strong>@TempData["Wynik2"]</strong></p>
 
 
 }

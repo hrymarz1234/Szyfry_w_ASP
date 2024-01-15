@@ -119,5 +119,32 @@
             return kod;
 
         }
+        public static string odszyfrowanie_vigenera(string tekst, string klucz)
+        {
+            string tab = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+            string tab2 = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ";
+            string pom = tekst;
+            string wynik = "";
+            int l1 = 0;
+            int l2 = 0;
+
+            
+            
+            for (int k = 0; k < tekst.Length; k++)
+            {
+                for (int j = 0; j < 35; j++)
+                {
+                    if (pom[k] == tab[j])
+                        l1 += j;
+                    if (klucz[(k % klucz.Length)] == tab[j])
+                        l2 += j;
+                }
+                l1 =(35+l1) - l2;
+                wynik += tab[l1 % 35];
+                l1 = 0;
+                l2 = 0;
+            }
+            return wynik;
+        }
     }
 }

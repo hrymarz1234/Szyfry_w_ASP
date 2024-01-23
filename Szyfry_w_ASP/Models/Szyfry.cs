@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models
 {
@@ -9,7 +10,7 @@ namespace WebApplication1.Models
         [Required]
         public int przesuniecie { get; set; }
         public bool taknie { get; set; }
-        public string klucz {get; set; }
+        public string? klucz {get; set; }
         public static string szyfr_cezara(string tekst, int przesuniecie)
         {
             string tab = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
